@@ -1,0 +1,24 @@
+{
+    "_QPVersion": "0.1.0",
+    "name": "GOOMPS",
+    "id": "GetOutOfMyPersonalSpace",
+    "author": "RedBrumbler",
+    "version": "0.0.1",
+    "packageId": "com.AnotherAxiom.GorillaTag",
+    "packageVersion": "1.0.7",
+    "type": "Gameplay",
+    "dependencies": [
+        {
+            "id": "MonkeComputer",
+            "version": "^1.4.0",
+            "downloadIfMissing": "https://github.com/RedBrumbler/MonkeComputer/releases/latest/download/MonkeComputer.qmod"
+        }
+    ],
+    "modFiles": [
+        "libgoomps.so"
+    ],
+    "libraryFiles": [
+    ],
+    "fileCopies": [
+    ]
+}
