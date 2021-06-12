@@ -58,7 +58,8 @@ extern "C" void load()
         SaveConfig();
 
     getLogger().info("Installing hooks...");
-    INSTALL_HOOK_OFFSETLESS(getLogger(), Player_Awake, il2cpp_utils::FindMethodUnsafe("GorillaLocomotion", "Player", "Awake", 0));
+    auto awakefun = il2cpp_utils::FindMethodUnsafe("GorillaLocomotion", "Player", "Awake", 0);
+    INSTALL_HOOK_OFFSETLESS(getLogger(), Player_Awake, awakefun);
     getLogger().info("Installed hooks!");
     
     getLogger().info("Registering custom types...");
