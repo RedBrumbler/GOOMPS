@@ -12,7 +12,7 @@
 #include "Photon/Realtime/Player.hpp"
 #include "config.hpp"
 #include "beatsaber-hook/shared/utils/il2cpp-utils.hpp"
-DEFINE_TYPE(GOOMPS::HideCollidingRigs);
+DEFINE_TYPE(GOOMPS, HideCollidingRigs);
 
 using namespace UnityEngine;
 using namespace Photon::Pun;

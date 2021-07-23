@@ -4,7 +4,7 @@
 #include "monkecomputer/shared/ViewLib/CustomComputer.hpp"
 #include "HideCollidingRigs.hpp"
 
-DEFINE_TYPE(GOOMPS::SettingsWatchView);
+DEFINE_TYPE(GOOMPS, SettingsWatchView);
 
 using namespace GorillaUI;
 

@@ -1,5 +1,6 @@
 #include "modloader/shared/modloader.hpp"
 #include "beatsaber-hook/shared/utils/logging.hpp"
+#include "beatsaber-hook/shared/utils/hooking.hpp"
 
 #include "GorillaLocomotion/Player.hpp"
 
@@ -28,7 +29,7 @@ Logger& getLogger()
     return *logger;
 }
 
-MAKE_HOOK_OFFSETLESS(Player_Awake, void, GorillaLocomotion::Player* self)
+MAKE_HOOK_MATCH(Player_Awake, &GorillaLocomotion::Player::Awake, void, GorillaLocomotion::Player* self)
 {
     Player_Awake(self);
 
@@ -58,16 +59,17 @@ extern "C" void load()
         SaveConfig();
 
     getLogger().info("Installing hooks...");
-    auto awakefun = il2cpp_utils::FindMethodUnsafe("GorillaLocomotion", "Player", "Awake", 0);
-    INSTALL_HOOK_OFFSETLESS(getLogger(), Player_Awake, awakefun);
+
+    INSTALL_HOOK(getLogger(), Player_Awake);
+
     getLogger().info("Installed hooks!");
     
     getLogger().info("Registering custom types...");
-    custom_types::Register::RegisterType<HideCollidingRigs>();
-    custom_types::Register::RegisterType<SettingsWatchView>();
+    custom_types::Register::AutoRegister();
     getLogger().info("Registered custom types!");
     
     GorillaUI::Register::RegisterWatchView<SettingsWatchView*>("GOOMPS", VERSION);
     GorillaUI::Register::RegisterSettingsView<SettingsWatchView*>("GOOMPS", VERSION);
+    
     getLogger().info("Mod Loaded!");
 }
